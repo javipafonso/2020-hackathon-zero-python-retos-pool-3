@@ -1,4 +1,4 @@
-from random
+import random
 
 options = ["Piedra", "Papel", "Tijeras"]
 
@@ -10,7 +10,7 @@ def quienGana(player, ai):
     resultado=""
     if player == 'Piedra' and ai == 'Papel' or player == 'Papel' and ai == 'Piedra':
         resultado = "Perdiste!"
-    elif player == ia:
+    elif player == ai:
         resultado = "Empate!"        
     elif player == 'Papel' and ai == 'Tijeras' or player == 'Tijeras' and ai == 'Papel':
         resultado = "Perdiste!"
@@ -26,9 +26,10 @@ def quienGana(player, ai):
 def Game():
     #
     #
+    
     player=input("Eliga una opcion: ")
-    indice=random.randint(0, len(options))
-    ai=options[indice]
+    indice=random.randint(0, len(options)-1)    
+    ai=options[indice]    
     #
     
     winner = quienGana(player, ai)
