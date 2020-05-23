@@ -11,11 +11,11 @@ logger = logging.getLogger(__name__)
 
 # Definimos algunas funciones para los comandos. Estos generalmente toman los dos argumentos update y context
 def start(update, context):
-    update.message.reply_text("Hola, Geeks!")    
+    return update.message.reply_text("Hola, Geeks!")    
     
 
 def help(update, context):
-    update.message.reply_text("Ayudame!")    
+    return update.message.reply_text("Ayudame!")    
     
 
 def mayus(update, context):
@@ -25,7 +25,7 @@ def mayus(update, context):
 def alreves(update, context):
     """Repite el mensaje del usuario."""
     #
-    return context.args[0].reverse()
+    return update.message.reply_text(context.args[0].reverse())
 
 def error(update, context):
     """Envia los errores por consola"""
@@ -40,10 +40,11 @@ def main():
     dp = ["start","help","mayus","alreves"]
 
     
+    
     update.dispatcher.add_handler(CommandHandler(dp[0],start))    
     update.dispatcher.add_handler(CommandHandler(dp[1],help))    
     update.dispatcher.add_handler(CommandHandler(dp[2],mayus))
-    update.dispatcher.add_handler(CommandHandler(dp[3],alreves))
+    update.dispatcher.add_handler(MessageHandler(Filters.text, dp[3]),alreves)
     # Este comando es un Trigger que se lanza cuando no hay comandos [alreves]
     #
     
