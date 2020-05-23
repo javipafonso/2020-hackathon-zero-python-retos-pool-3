@@ -6,10 +6,10 @@ import string
 def RandomPasswordGenerator(passLen=10):
     #
     #
-    letters = string.ascii_lowercase
+    password = string.ascii_letters + string.punctuation + string.digits
     
     
-    return ''.join(random.choice(letters) for i in range(passLen)) 
+    return ''.join(random.choice(password) for i in range(passLen)) 
     #
     #
 
